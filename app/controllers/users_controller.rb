@@ -20,7 +20,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
+
 
   # POST /users
   # POST /users.json
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
 
     # respond_to do |format|
       if @user.save
+        log_in @user
         flash[:success] = "Welcome Sample App"
         redirect_to @user
         # log_in @user
